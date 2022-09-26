@@ -1,16 +1,17 @@
 package web.service;
 
+import org.springframework.stereotype.Service;
 import web.model.Car;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
+@Service
 public class CarServiceImpl implements CarService {
 
-    private static final List<Car> cars;
+    private List<Car> cars;
 
-    static {
+    public CarServiceImpl() {
         cars = Arrays.asList(
                 new Car(1, "Nissan", 23423),
                 new Car(2, "Lada", 34242),
@@ -18,6 +19,7 @@ public class CarServiceImpl implements CarService {
                 new Car(4, "Daewoo", 43533),
                 new Car(5, "Reno", 34534));
     }
+
     @Override
     public List<Car> getCars(int count) {
         if (count >= 5) {

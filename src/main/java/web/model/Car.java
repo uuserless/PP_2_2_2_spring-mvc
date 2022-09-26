@@ -23,4 +23,31 @@ public class Car {
     public int getSeries() {
         return series;
     }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", model='" + model + '\'' +
+                ", series=" + series +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Car car)) return false;
+
+        if (getId() != car.getId()) return false;
+        if (getSeries() != car.getSeries()) return false;
+        return getModel().equals(car.getModel());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getId();
+        result = 31 * result + getModel().hashCode();
+        result = 31 * result + getSeries();
+        return result;
+    }
 }
